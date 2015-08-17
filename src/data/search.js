@@ -6,7 +6,7 @@ define(function(require) {
 
   return flight.component(function search() {
     this.defaultAttrs({
-      searchUrl: '//nominatim.openstreetmap.org/search'
+      searchUrl: 'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates'
     });
     this.configureSearch = function(ev, config) {
       if (config.search && config.search.geosearch) {
@@ -19,15 +19,14 @@ define(function(require) {
     this.onSearch = function(ev, options) {
       ev.preventDefault();
       var parameters = {
-        // addressdetails: 1,
-        format: "json",
-        q: options.query,
-        bounded: 1
+        f: 'json',
+        singleLine: options.query,
+        maxLocations: 1
       };
       if (this.maxBounds) {
-        parameters.viewbox = [
-          this.maxBounds[1][1], this.maxBounds[1][0],
-          this.maxBounds[0][1], this.maxBounds[0][0]
+        parameters.searchExtent = [
+          this.maxBounds[1][1], this.maxBounds[0][0],
+          this.maxBounds[0][1], this.maxBounds[1][0]
         ].join(',');
       }
       $.getJSON(this.attr.searchUrl,
@@ -35,14 +34,14 @@ define(function(require) {
                 this.searchResults.bind(this));
     };
 
-    this.searchResults = function(results) {
-      if (results.length) {
-        var location = results[0],
-            displayName = location.display_name;
+    this.searchResults = function(result) {
+      if (result.candidates.length) {
+        var candidate = result.candidates[0],
+            displayName = candidate.address;
         this.trigger('dataSearchResult', {
           name: displayName,
-          lat: location.lat,
-          lng: location.lon
+          lat: candidate.location.y,
+          lng: candidate.location.x
         });
       }
     };
