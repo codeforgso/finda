@@ -10,7 +10,7 @@ define(function(require, exports, module) {
 
   module.exports = flight.component(function map() {
     this.attributes({
-      tileUrl: 'https://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
+      tileUrl: 'http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
       tileAttribution: '&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
       tileSubdomains: '0123',
       tileMinZoom: 2,
