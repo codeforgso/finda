@@ -6,7 +6,7 @@ define(function(require) {
 
   return flight.component(function search() {
     this.defaultAttrs({
-      searchUrl: 'http://gisimages.greensboro-nc.gov/prod/rest/services/Geocoding/AddressPoints/GeocodeServer/findAddressCandidates'
+      searchUrl: 'http://gis.greensboro-nc.gov/arcgis/rest/services/Geocoding/AddressPointsWeb_GCS/GeocodeServer/findAddressCandidates'
     });
     this.configureSearch = function(ev, config) {
       if (config.search && config.search.geosearch) {
@@ -21,7 +21,7 @@ define(function(require) {
       var parameters = {
         // addressdetails: 1,
         singlekey: options.query,
-        f: "pjson"        
+        f: "pjson"
         //bounded: 1
       };
       // if (this.maxBounds) {
@@ -35,14 +35,14 @@ define(function(require) {
                 this.searchResults.bind(this));
     };
 
-    this.searchResults = function(results) {
-      if (results.length) {
-        var location = results[0],
-            displayName = location.display_name;
+    this.searchResults = function(result) {
+      if (result.candidates.length) {
+        var candidate = result.candidates[0],
+            displayName = candidate.address;
         this.trigger('dataSearchResult', {
           name: displayName,
-          lat: location.lat,
-          lng: location.lon
+          lat: candidate.location.y,
+          lng: candidate.location.x
         });
       }
     };
