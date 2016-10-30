@@ -27,6 +27,7 @@ body > div.container {
 .navbar .navbar-header {
   margin-top: 8px;
   margin-left: 0;
+  margin-bottom: 8px;
 }
 
 .navbar .navbar-header .navbar-toggle {
