@@ -250,6 +250,9 @@ body > div.container {
   .sidebar.open{
     margin-left: 0%;
   }
+  #map {
+    margin-top: 8px;
+  }
 }
 
 /* The sidebar columns (filter, list, etc) */
