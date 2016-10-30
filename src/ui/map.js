@@ -12,6 +12,8 @@ define(function(require, exports, module) {
     this.attributes({
       tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
       tileAttribution: '&copy;2012 Esri & Stamen, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a> Natural Earth',
+      // tileUrl: 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
+      // tileAttribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       tileSubdomains: '0123',
       tileMinZoom: 2,
       tileMaxZoom: 18
