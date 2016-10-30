@@ -382,8 +382,9 @@ body.has-facets.has-list #map {
   text-align: center;
 }
 
-@media only screen and (min-width : 480px) {
-  .navbar-brand {
-    font-size: 100vh;
+/* Adjust navbar title text size for small screens */
+@media only screen and (max-width : 480px) {
+  .navbar .navbar-brand {
+    font-size: 18px;
   }
 }
