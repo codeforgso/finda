@@ -384,6 +384,6 @@ body.has-facets.has-list #map {
 
 @media only screen and (min-width : 480px) {
   .navbar-brand {
-    font-size: 100%;
+    font-size: 100vh;
   }
 }
