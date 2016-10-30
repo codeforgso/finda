@@ -12,6 +12,8 @@ define(function(require, exports, module) {
     this.attributes({
       tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
       tileAttribution: '&copy;2012 Esri & Stamen, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a> Natural Earth',
+      // tileUrl: 'http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
+      // tileAttribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       tileSubdomains: '0123',
       tileMinZoom: 2,
       tileMaxZoom: 18
@@ -41,22 +43,21 @@ define(function(require, exports, module) {
     this.configureMap = function(ev, config) {
       this.trigger('mapStarted', {});
       // if list or facets are emabled, give the map less space
-      var addition = 0;
       if (config.facets) {
-        addition += 300;
+        $('body').addClass('has-facets');
       }
       if (config.list) {
-        addition += 300;
+        $('body').addClass('has-list');
       }
 
-      if (addition > 0) {
-        window.setTimeout(function() {
-          if (this.map) {
-            this.$node.css('left', '+=' + addition);
-            this.map.invalidateSize();
-          }
-        }.bind(this), 50);
-      }
+      // if (addition > 0) {
+      //   window.setTimeout(function() {
+      //     if (this.map) {
+      //       this.$node.css('left', '+=' + addition);
+      //       this.map.invalidateSize();
+      //     }
+      //   }.bind(this), 50);
+      // }
 
       var mapConfig = config.map;
 
