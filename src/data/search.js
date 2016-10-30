@@ -6,7 +6,7 @@ define(function(require) {
 
   return flight.component(function search() {
     this.defaultAttrs({
-      searchUrl: 'http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates'
+      searchUrl: 'http://gis.greensboro-nc.gov/arcgis/rest/services/Geocoding/AddressPointsWeb_GCS/GeocodeServer/findAddressCandidates'
     });
     this.configureSearch = function(ev, config) {
       if (config.search && config.search.geosearch) {
@@ -19,16 +19,17 @@ define(function(require) {
     this.onSearch = function(ev, options) {
       ev.preventDefault();
       var parameters = {
-        f: 'json',
-        singleLine: options.query,
-        maxLocations: 1
+        // addressdetails: 1,
+        singlekey: options.query,
+        f: "pjson"
+        //bounded: 1
       };
-      if (this.maxBounds) {
-        parameters.searchExtent = [
-          this.maxBounds[1][1], this.maxBounds[0][0],
-          this.maxBounds[0][1], this.maxBounds[1][0]
-        ].join(',');
-      }
+      // if (this.maxBounds) {
+      //   parameters.viewbox = [
+      //     this.maxBounds[1][1], this.maxBounds[1][0],
+      //     this.maxBounds[0][1], this.maxBounds[0][0]
+      //   ].join(',');
+      // }
       $.getJSON(this.attr.searchUrl,
                 parameters,
                 this.searchResults.bind(this));

@@ -10,8 +10,8 @@ define(function(require, exports, module) {
 
   module.exports = flight.component(function map() {
     this.attributes({
-      tileUrl: 'http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
-      tileAttribution: '&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
+      tileUrl: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+      tileAttribution: '&copy;2012 Esri & Stamen, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a> Natural Earth',
       tileSubdomains: '0123',
       tileMinZoom: 2,
       tileMaxZoom: 18
@@ -234,7 +234,6 @@ define(function(require, exports, module) {
     //Added method to pan abnd zoom to features when data is filtered
     this.panToFeatures = function(ev, features) {
       var latLongs = [];
-      console.log(features.keepLayers);
       $.each(features.keepLayers, function(index, value){
         var latLong = [];
         latLong.push(value._latlng.lat);
