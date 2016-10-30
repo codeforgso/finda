@@ -43,22 +43,21 @@ define(function(require, exports, module) {
     this.configureMap = function(ev, config) {
       this.trigger('mapStarted', {});
       // if list or facets are emabled, give the map less space
-      var addition = 0;
       if (config.facets) {
-        addition += 300;
+        $('body').addClass('has-facets');
       }
       if (config.list) {
-        addition += 300;
+        $('body').addClass('has-list');
       }
 
-      if (addition > 0) {
-        window.setTimeout(function() {
-          if (this.map) {
-            this.$node.css('left', '+=' + addition);
-            this.map.invalidateSize();
-          }
-        }.bind(this), 50);
-      }
+      // if (addition > 0) {
+      //   window.setTimeout(function() {
+      //     if (this.map) {
+      //       this.$node.css('left', '+=' + addition);
+      //       this.map.invalidateSize();
+      //     }
+      //   }.bind(this), 50);
+      // }
 
       var mapConfig = config.map;
 
