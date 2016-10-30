@@ -27,7 +27,6 @@ body > div.container {
 .navbar .navbar-header {
   margin-top: 8px;
   margin-left: 0;
-  margin-bottom: 8px;
 }
 
 .navbar .navbar-header .navbar-toggle {
@@ -250,9 +249,6 @@ body > div.container {
   .sidebar.open{
     margin-left: 0%;
   }
-  #map {
-    margin-top: 8px;
-  }
 }
 
 /* The sidebar columns (filter, list, etc) */
@@ -384,4 +380,10 @@ body.has-facets.has-list #map {
 
 #loading h4 {
   text-align: center;
+}
+
+@media only screen and (min-width : 480px) {
+  .navbar-brand {
+    font-size: 100%;
+  }
 }
